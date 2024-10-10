@@ -6,7 +6,7 @@
     <groupId>com.example</groupId>
     <artifactId>my-webapp</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging> <!-- Specify WAR packaging -->
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -32,9 +32,30 @@
     </dependencies>
 
     <build>
-        <finalName>my-webapp</finalName> <!-- Name of the WAR file -->
-        
+        <finalName>my-webapp</finalName>
+
         <plugins>
             <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Maven WAR Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <warSourceDirectory>${project.basedir}/src/main/webapp</warSourceDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
