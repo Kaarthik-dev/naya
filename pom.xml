@@ -2,14 +2,27 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    
     <groupId>com.example</groupId>
-    <artifactId>my-app</artifactId>
+    <artifactId>my-webapp</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging> <!-- Specify WAR packaging -->
+
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
     <dependencies>
+        <!-- Servlet API dependency -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- JUnit for testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -17,4 +30,11 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-</project>
+
+    <build>
+        <finalName>my-webapp</finalName> <!-- Name of the WAR file -->
+        
+        <plugins>
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
